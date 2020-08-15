@@ -45,7 +45,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
     private int i=0,no=1;
     public  DlgPasien pasien=new DlgPasien(null,false);
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    private DlgBarang barang=new DlgBarang(null,false);
+    public  DlgBarang barang=new DlgBarang(null,false);
     private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");    
     private double ttljual=0,ttlppn=0,ttldisc=0,ttltambahan=0,ttlembalase=0,ttltuslah=0,ttlsubttl=0,subttljual=0,subttldisc=0,subttlall=0,subttltambahan=0,subttlembalase=0,subttltuslah=0,ttlhpp=0;
     private String totaljual="",notapenjualan="No",verifikasi_penjualan_di_kasir=Sequel.cariIsi(
@@ -1031,7 +1031,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         nmmem.setText("");
         kdptg.setText("");
         nmptg.setText("");
-        tampil();
+        TabRawatMouseClicked(null);
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -1327,7 +1327,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                
                              if(sukses==true){
                                 Sequel.mengedit("penjualan","nota_jual=?","status='Sudah Dibayar'",1,new String[]{rs.getString("nota_jual")});
-                                Sequel.menyimpan("tagihan_sadewa","'"+rs.getString("nota_jual")+"','"+rs.getString("no_rkm_medis")+"','"+rs.getString("nm_pasien")+"','-',concat('"+rs.getString("tgl_jual")+
+                                Sequel.menyimpan("tagihan_sadewa","'"+rs.getString("nota_jual")+"','"+rs.getString("no_rkm_medis")+"','"+rs.getString("nm_pasien").replaceAll("'","")+"','-',concat('"+rs.getString("tgl_jual")+
                                        "',' ',CURTIME()),'Pelunasan','"+ttljual+"','"+ttljual+"','Sudah','"+akses.getkode()+"'","No.Nota");    
                                 Sequel.Commit();
                              }else{
@@ -1393,11 +1393,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         "select count(*) from detailjual where nota_jual=? and aturan_pakai<>''",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())>0){
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
                     Valid.MyReportqry("rptItemResepPenjualan.jasper","report","::[ Aturan Pakai Obat ]::",
-                        "select penjualan.nota_jual,penjualan.tgl_jual,pasien.tgl_lahir, "+
-                        "pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
+                        "select penjualan.nota_jual,penjualan.tgl_jual, "+
+                        "penjualan.no_rkm_medis,penjualan.nm_pasien,databarang.nama_brng,"+
                         "detailjual.aturan_pakai,detailjual.jumlah,kodesatuan.satuan "+
                         "from penjualan inner join detailjual on penjualan.nota_jual=detailjual.nota_jual "+
-                        "inner join pasien on penjualan.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join databarang on detailjual.kode_brng=databarang.kode_brng "+
                         "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
                         "where penjualan.nota_jual='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim()+"' and detailjual.aturan_pakai<>''",param);
@@ -1407,11 +1406,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         "select count(*) from obat_racikan_jual where nota_jual=? and aturan_pakai<>''",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())>0){
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
                     Valid.MyReportqry("rptItemResepPenjualan2.jasper","report","::[ Aturan Pakai Obat ]::",
-                        "select penjualan.nota_jual,penjualan.tgl_jual,pasien.tgl_lahir,metode_racik.nm_racik, "+
-                        "pasien.no_rkm_medis,pasien.nm_pasien,obat_racikan_jual.nama_racik,"+
+                        "select penjualan.nota_jual,penjualan.tgl_jual,metode_racik.nm_racik, "+
+                        "penjualan.no_rkm_medis,penjualan.nm_pasien,obat_racikan_jual.nama_racik,"+
                         "obat_racikan_jual.aturan_pakai,obat_racikan_jual.jml_dr "+
                         "from penjualan inner join obat_racikan_jual on penjualan.nota_jual=obat_racikan_jual.nota_jual "+
-                        "inner join pasien on penjualan.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join metode_racik on obat_racikan_jual.kd_racik=metode_racik.kd_racik "+
                         "where obat_racikan_jual.nota_jual='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim()+"' and obat_racikan_jual.aturan_pakai<>''",param);
                 }                
@@ -1443,11 +1441,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         "select count(*) from detailjual where nota_jual=? and aturan_pakai<>''",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())>0){
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
                     Valid.MyReportqry("rptItemResepPenjualan3.jasper","report","::[ Aturan Pakai Obat ]::",
-                        "select penjualan.nota_jual,penjualan.tgl_jual,pasien.tgl_lahir, "+
-                        "pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
+                        "select penjualan.nota_jual,penjualan.tgl_jual, "+
+                        "penjualan.no_rkm_medis,penjualan.nm_pasien,databarang.nama_brng,"+
                         "detailjual.aturan_pakai,detailjual.jumlah,kodesatuan.satuan,jenis.nama as jenis "+
                         "from penjualan inner join detailjual on penjualan.nota_jual=detailjual.nota_jual "+
-                        "inner join pasien on penjualan.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join databarang on detailjual.kode_brng=databarang.kode_brng "+
                         "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
                         "inner join jenis on databarang.kdjns=jenis.kdjns "+
@@ -1458,11 +1455,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         "select count(*) from obat_racikan_jual where nota_jual=? and aturan_pakai<>''",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())>0){
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
                     Valid.MyReportqry("rptItemResepPenjualan2.jasper","report","::[ Aturan Pakai Obat ]::",
-                        "select penjualan.nota_jual,penjualan.tgl_jual,pasien.tgl_lahir,metode_racik.nm_racik, "+
-                        "pasien.no_rkm_medis,pasien.nm_pasien,obat_racikan_jual.nama_racik,"+
+                        "select penjualan.nota_jual,penjualan.tgl_jual,metode_racik.nm_racik, "+
+                        "penjualan.no_rkm_medis,penjualan.nm_pasien,obat_racikan_jual.nama_racik,"+
                         "obat_racikan_jual.aturan_pakai,obat_racikan_jual.jml_dr "+
                         "from penjualan inner join obat_racikan_jual on penjualan.nota_jual=obat_racikan_jual.nota_jual "+
-                        "inner join pasien on penjualan.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join metode_racik on obat_racikan_jual.kd_racik=metode_racik.kd_racik "+
                         "where obat_racikan_jual.nota_jual='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim()+"' and obat_racikan_jual.aturan_pakai<>''",param);
                 }  
@@ -1494,11 +1490,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         "select count(*) from detailjual where nota_jual=? and aturan_pakai<>''",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())>0){
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
                     Valid.MyReportqry("rptItemResepPenjualan5.jasper","report","::[ Aturan Pakai Obat ]::",
-                        "select penjualan.nota_jual,penjualan.tgl_jual,pasien.tgl_lahir, "+
-                        "pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
+                        "select penjualan.nota_jual,penjualan.tgl_jual, "+
+                        "penjualan.no_rkm_medis,penjualan.nm_pasien,databarang.nama_brng,"+
                         "detailjual.aturan_pakai,detailjual.jumlah,kodesatuan.satuan "+
                         "from penjualan inner join detailjual on penjualan.nota_jual=detailjual.nota_jual "+
-                        "inner join pasien on penjualan.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join databarang on detailjual.kode_brng=databarang.kode_brng "+
                         "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
                         "where penjualan.nota_jual='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim()+"' and detailjual.aturan_pakai<>''",param);
@@ -1508,11 +1503,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         "select count(*) from obat_racikan_jual where nota_jual=? and aturan_pakai<>''",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim())>0){
                     param.put("logo",Sequel.cariGambar("select logo from setting"));
                     Valid.MyReportqry("rptItemResepPenjualan6.jasper","report","::[ Aturan Pakai Obat ]::",
-                        "select penjualan.nota_jual,penjualan.tgl_jual,pasien.tgl_lahir,metode_racik.nm_racik, "+
-                        "pasien.no_rkm_medis,pasien.nm_pasien,obat_racikan_jual.nama_racik,"+
+                        "select penjualan.nota_jual,penjualan.tgl_jual,metode_racik.nm_racik, "+
+                        "penjualan.no_rkm_medis,penjualan.nm_pasien,obat_racikan_jual.nama_racik,"+
                         "obat_racikan_jual.aturan_pakai,obat_racikan_jual.jml_dr "+
                         "from penjualan inner join obat_racikan_jual on penjualan.nota_jual=obat_racikan_jual.nota_jual "+
-                        "inner join pasien on penjualan.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join metode_racik on obat_racikan_jual.kd_racik=metode_racik.kd_racik "+
                         "where obat_racikan_jual.nota_jual='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim()+"' and obat_racikan_jual.aturan_pakai<>''",param);
                 } 
@@ -1620,18 +1614,13 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     " and penjualan.kd_bangsal=bangsal.kd_bangsal "+
                     " and penjualan.nota_jual=detailjual.nota_jual "+
                     " and penjualan.nip=petugas.nip and databarang.kdjns=jenis.kdjns "+
-                    " where "+tanggal+nofak+mem+ptg+sat+bar+" and penjualan.nota_jual like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and penjualan.no_rkm_medis like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and penjualan.nm_pasien like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and penjualan.nip like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and petugas.nama like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and penjualan.keterangan like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and penjualan.jns_jual like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and detailjual.kode_brng like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and bangsal.nm_bangsal like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and databarang.nama_brng like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and detailjual.kode_sat like '%"+TCari.getText()+"%' or "+
-                    tanggal+nofak+mem+ptg+sat+bar+" and jenis.nama like '%"+TCari.getText()+"%' "+
+                    " where "+tanggal+nofak+mem+ptg+sat+bar+" and "+
+                    "(penjualan.nota_jual like '%"+TCari.getText()+"%' or penjualan.no_rkm_medis like '%"+TCari.getText()+"%' or "+
+                    "penjualan.nm_pasien like '%"+TCari.getText()+"%' or  penjualan.nip like '%"+TCari.getText()+"%' or "+
+                    "petugas.nama like '%"+TCari.getText()+"%' or penjualan.keterangan like '%"+TCari.getText()+"%' or "+
+                    "penjualan.jns_jual like '%"+TCari.getText()+"%' or detailjual.kode_brng like '%"+TCari.getText()+"%' or "+
+                    "bangsal.nm_bangsal like '%"+TCari.getText()+"%' or databarang.nama_brng like '%"+TCari.getText()+"%' or "+
+                    "detailjual.kode_sat like '%"+TCari.getText()+"%' or jenis.nama like '%"+TCari.getText()+"%') "+
                     " group by penjualan.nota_jual order by penjualan.tgl_jual,penjualan.nota_jual ");
             try {
                 rs=ps.executeQuery();
@@ -1660,10 +1649,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             " detailjual inner join databarang inner join kodesatuan inner join jenis "+
                             " on detailjual.kode_brng=databarang.kode_brng and databarang.kdjns=jenis.kdjns "+
                             " and detailjual.kode_sat=kodesatuan.kode_sat where "+
-                            " detailjual.nota_jual='"+rs.getString(1)+"' "+sat+bar+" and detailjual.kode_brng like '%"+TCari.getText()+"%' or "+
-                            " detailjual.nota_jual='"+rs.getString(1)+"' "+sat+bar+" and databarang.nama_brng like '%"+TCari.getText()+"%' or "+
-                            " detailjual.nota_jual='"+rs.getString(1)+"' "+sat+bar+" and detailjual.kode_sat like '%"+TCari.getText()+"%' or "+
-                            " detailjual.nota_jual='"+rs.getString(1)+"' "+sat+bar+" and jenis.nama like '%"+TCari.getText()+"%' order by detailjual.kode_brng");
+                            " detailjual.nota_jual='"+rs.getString(1)+"' "+sat+bar+" and "+
+                            " (detailjual.kode_brng like '%"+TCari.getText()+"%' or databarang.nama_brng like '%"+TCari.getText()+"%' or "+
+                            " detailjual.kode_sat like '%"+TCari.getText()+"%' or jenis.nama like '%"+TCari.getText()+"%')"+
+                            " order by detailjual.kode_brng");
                     try {
                         rs2=ps2.executeQuery();
                         subttlall=0;

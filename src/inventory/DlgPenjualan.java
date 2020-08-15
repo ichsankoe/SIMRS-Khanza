@@ -35,7 +35,7 @@ public class DlgPenjualan extends javax.swing.JDialog {
     private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
     private double ttl=0,ttlhpp=0,y=0,z=0,stokbarang=0,embalasen=Sequel.cariIsiAngka("select embalase_per_obat from set_embalase"),
         tuslahn=Sequel.cariIsiAngka("select tuslah_per_obat from set_embalase"),bayar=0,total=0,ppn=0,besarppn=0,tagihanppn=0;;
-    private int jml=0,i=0,row,kolom=0,reply;
+    private int jml=0,i=0,row,kolom=0,reply,index;
     public DlgAturanPakai aturan_pakai=new DlgAturanPakai(null,false);
     private String verifikasi_penjualan_di_kasir=Sequel.cariIsi(
             "select verifikasi_penjualan_di_kasir from set_nota"),
@@ -644,11 +644,11 @@ public class DlgPenjualan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
@@ -1047,6 +1047,11 @@ public class DlgPenjualan extends javax.swing.JDialog {
 
         Tgl.setDisplayFormat("dd-MM-yyyy");
         Tgl.setName("Tgl"); // NOI18N
+        Tgl.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TglItemStateChanged(evt);
+            }
+        });
         Tgl.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TglKeyPressed(evt);
@@ -1335,6 +1340,9 @@ public class DlgPenjualan extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
+        carijual.pasien.dispose();
+        carijual.petugas.dispose();
+        carijual.barang.dispose();
         carijual.dispose();
         dispose();  
 }//GEN-LAST:event_BtnKeluarActionPerformed
@@ -1489,11 +1497,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     "select count(*) from detailjual where nota_jual=? and aturan_pakai<>''",NoNota.getText())>0){
                                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
                                 Valid.MyReportqry("rptItemResepPenjualan.jasper","report","::[ Aturan Pakai Obat ]::",
-                                    "select penjualan.nota_jual,penjualan.tgl_jual,pasien.tgl_lahir, "+
-                                    "pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
+                                    "select penjualan.nota_jual,penjualan.tgl_jual, "+
+                                    "penjualan.no_rkm_medis,penjualan.nm_pasien,databarang.nama_brng,"+
                                     "detailjual.aturan_pakai,detailjual.jumlah,kodesatuan.satuan "+
                                     "from penjualan inner join detailjual on penjualan.nota_jual=detailjual.nota_jual "+
-                                    "inner join pasien on penjualan.no_rkm_medis=pasien.no_rkm_medis "+
                                     "inner join databarang on detailjual.kode_brng=databarang.kode_brng "+
                                     "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
                                     "where penjualan.nota_jual='"+NoNota.getText()+"' and detailjual.aturan_pakai<>''",param);
@@ -1503,11 +1510,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     "select count(*) from obat_racikan_jual where nota_jual=? and aturan_pakai<>''",NoNota.getText())>0){
                                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
                                 Valid.MyReportqry("rptItemResepPenjualan2.jasper","report","::[ Aturan Pakai Obat ]::",
-                                    "select penjualan.nota_jual,penjualan.tgl_jual,pasien.tgl_lahir,metode_racik.nm_racik, "+
-                                    "pasien.no_rkm_medis,pasien.nm_pasien,obat_racikan_jual.nama_racik,"+
+                                    "select penjualan.nota_jual,penjualan.tgl_jual,metode_racik.nm_racik, "+
+                                    "penjualan.no_rkm_medis,penjualan.nm_pasien,obat_racikan_jual.nama_racik,"+
                                     "obat_racikan_jual.aturan_pakai,obat_racikan_jual.jml_dr "+
                                     "from penjualan inner join obat_racikan_jual on penjualan.nota_jual=obat_racikan_jual.nota_jual "+
-                                    "inner join pasien on penjualan.no_rkm_medis=pasien.no_rkm_medis "+
                                     "inner join metode_racik on obat_racikan_jual.kd_racik=metode_racik.kd_racik "+
                                     "where obat_racikan_jual.nota_jual='"+NoNota.getText()+"' and obat_racikan_jual.aturan_pakai<>''",param);
                             }                
@@ -1519,11 +1525,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     "select count(*) from detailjual where nota_jual=? and aturan_pakai<>''",NoNota.getText())>0){
                                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
                                 Valid.MyReportqry("rptItemResepPenjualan3.jasper","report","::[ Aturan Pakai Obat ]::",
-                                    "select penjualan.nota_jual,penjualan.tgl_jual,pasien.tgl_lahir, "+
-                                    "pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
+                                    "select penjualan.nota_jual,penjualan.tgl_jual, "+
+                                    "penjualan.no_rkm_medis,penjualan.nm_pasien,databarang.nama_brng,"+
                                     "detailjual.aturan_pakai,detailjual.jumlah,kodesatuan.satuan,jenis.nama as jenis "+
                                     "from penjualan inner join detailjual on penjualan.nota_jual=detailjual.nota_jual "+
-                                    "inner join pasien on penjualan.no_rkm_medis=pasien.no_rkm_medis "+
                                     "inner join databarang on detailjual.kode_brng=databarang.kode_brng "+
                                     "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
                                     "inner join jenis on databarang.kdjns=jenis.kdjns "+
@@ -1534,11 +1539,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     "select count(*) from obat_racikan_jual where nota_jual=? and aturan_pakai<>''",NoNota.getText())>0){
                                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
                                 Valid.MyReportqry("rptItemResepPenjualan2.jasper","report","::[ Aturan Pakai Obat ]::",
-                                    "select penjualan.nota_jual,penjualan.tgl_jual,pasien.tgl_lahir,metode_racik.nm_racik, "+
-                                    "pasien.no_rkm_medis,pasien.nm_pasien,obat_racikan_jual.nama_racik,"+
+                                    "select penjualan.nota_jual,penjualan.tgl_jual,metode_racik.nm_racik, "+
+                                    "penjualan.no_rkm_medis,penjualan.nm_pasien,obat_racikan_jual.nama_racik,"+
                                     "obat_racikan_jual.aturan_pakai,obat_racikan_jual.jml_dr "+
                                     "from penjualan inner join obat_racikan_jual on penjualan.nota_jual=obat_racikan_jual.nota_jual "+
-                                    "inner join pasien on penjualan.no_rkm_medis=pasien.no_rkm_medis "+
                                     "inner join metode_racik on obat_racikan_jual.kd_racik=metode_racik.kd_racik "+
                                     "where obat_racikan_jual.nota_jual='"+NoNota.getText()+"' and obat_racikan_jual.aturan_pakai<>''",param);
                             }                
@@ -1550,11 +1554,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     "select count(*) from detailjual where nota_jual=? and aturan_pakai<>''",NoNota.getText())>0){
                                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
                                 Valid.MyReportqry("rptItemResepPenjualan5.jasper","report","::[ Aturan Pakai Obat ]::",
-                                    "select penjualan.nota_jual,penjualan.tgl_jual,pasien.tgl_lahir, "+
-                                    "pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
+                                    "select penjualan.nota_jual,penjualan.tgl_jual, "+
+                                    "penjualan.no_rkm_medis,penjualan.nm_pasien,databarang.nama_brng,"+
                                     "detailjual.aturan_pakai,detailjual.jumlah,kodesatuan.satuan "+
                                     "from penjualan inner join detailjual on penjualan.nota_jual=detailjual.nota_jual "+
-                                    "inner join pasien on penjualan.no_rkm_medis=pasien.no_rkm_medis "+
                                     "inner join databarang on detailjual.kode_brng=databarang.kode_brng "+
                                     "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
                                     "where penjualan.nota_jual='"+NoNota.getText()+"' and detailjual.aturan_pakai<>''",param);
@@ -1564,11 +1567,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     "select count(*) from obat_racikan_jual where nota_jual=? and aturan_pakai<>''",NoNota.getText())>0){
                                 param.put("logo",Sequel.cariGambar("select logo from setting")); 
                                 Valid.MyReportqry("rptItemResepPenjualan6.jasper","report","::[ Aturan Pakai Obat ]::",
-                                    "select penjualan.nota_jual,penjualan.tgl_jual,pasien.tgl_lahir,metode_racik.nm_racik, "+
-                                    "pasien.no_rkm_medis,pasien.nm_pasien,obat_racikan_jual.nama_racik,"+
+                                    "select penjualan.nota_jual,penjualan.tgl_jual,metode_racik.nm_racik, "+
+                                    "penjualan.no_rkm_medis,penjualan.nm_pasien,obat_racikan_jual.nama_racik,"+
                                     "obat_racikan_jual.aturan_pakai,obat_racikan_jual.jml_dr "+
                                     "from penjualan inner join obat_racikan_jual on penjualan.nota_jual=obat_racikan_jual.nota_jual "+
-                                    "inner join pasien on penjualan.no_rkm_medis=pasien.no_rkm_medis "+
                                     "inner join metode_racik on obat_racikan_jual.kd_racik=metode_racik.kd_racik "+
                                     "where obat_racikan_jual.nota_jual='"+NoNota.getText()+"' and obat_racikan_jual.aturan_pakai<>''",param);
                             }                
@@ -1868,13 +1870,12 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgBarang barang=new DlgBarang(null,false);
-        barang.emptTeks();
-        barang.isCek();
-        barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        barang.setLocationRelativeTo(internalFrame1);
-        barang.setAlwaysOnTop(false);
-        barang.setVisible(true);
+        carijual.barang.emptTeks();
+        carijual.barang.isCek();
+        carijual.barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        carijual.barang.setLocationRelativeTo(internalFrame1);
+        carijual.barang.setAlwaysOnTop(false);
+        carijual.barang.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnTambahActionPerformed
 
@@ -2231,6 +2232,13 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_ppStok1ActionPerformed
 
+    private void TglItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TglItemStateChanged
+        try {
+            autoNomor();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_TglItemStateChanged
+
     /**
     * @param args the command line arguments
     */
@@ -2344,7 +2352,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         nobatch=new String[jml];
         nofaktur=new String[jml];
         kadaluarsa=new String[jml];
-        int index=0;        
+        index=0;        
         for(i=0;i<row;i++){
             try {
                 if(Double.parseDouble(tbObat.getValueAt(i,0).toString())>0){
@@ -2513,7 +2521,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         nobatch=new String[jml];
         nofaktur=new String[jml];
         kadaluarsa=new String[jml];
-        int index=0;        
+        index=0;        
         for(i=0;i<row;i++){
             try {
                 if(Double.parseDouble(tbObat.getValueAt(i,0).toString())>0){
@@ -2703,7 +2711,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             kadaluarsa=new String[jml];
             kps=new double[jml];
             kandungan=new String[jml];
-            int index=0;        
+            index=0;        
             for(i=0;i<row;i++){
                 try {
                     if(Valid.SetAngka(tbDetailObatRacikan.getValueAt(i,8).toString())>0){
@@ -3890,7 +3898,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 Sequel.menyimpan2("tampjurnal","'"+Persediaan_Obat_Jual_Bebas+"','Persediaan Obat Jual Bebas','0','"+ttlhpp+"'","Rekening");                              
                 sukses=jur.simpanJurnal(NoNota.getText(),Valid.SetTgl(Tgl.getSelectedItem()+""),"U","PENJUALAN DI "+nmgudang.getText().toUpperCase()+", OLEH "+akses.getkode());     
                 if(sukses==true){
-                    sukses=Sequel.menyimpantf2("tagihan_sadewa","'"+NoNota.getText()+"','"+kdmem.getText()+"','"+nmmem.getText()+"','-',concat('"+Valid.SetTgl(Tgl.getSelectedItem()+"")+
+                    sukses=Sequel.menyimpantf2("tagihan_sadewa","'"+NoNota.getText()+"','"+kdmem.getText()+"','"+nmmem.getText().replaceAll("'","")+"','-',concat('"+Valid.SetTgl(Tgl.getSelectedItem()+"")+
                             "',' ',CURTIME()),'Pelunasan','"+ttl+"','"+ttl+"','Sudah','"+akses.getkode()+"'","No.Nota");
                 }   
             }

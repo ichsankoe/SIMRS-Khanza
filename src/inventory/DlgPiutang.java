@@ -980,7 +980,7 @@ public class DlgPiutang extends javax.swing.JDialog {
         panelisi3.add(NoNota);
         NoNota.setBounds(74, 10, 110, 23);
 
-        label11.setText("Tgl.Jual :");
+        label11.setText("Tgl.Piutang :");
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label11);
@@ -1386,7 +1386,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 if(sukses==true){
                     Sequel.queryu("delete from tampjurnal");
                     Sequel.menyimpan2("tampjurnal","'"+Sequel.cariIsi("select Piutang_Obat from set_akun")+"','PIUTANG OBAT','"+(ttljual+ongkir-uangmuka)+"','0'","Rekening");    
-                    Sequel.menyimpan2("tampjurnal","'"+Sequel.cariIsi("select Kontra_Piutang_Obat from set_akun")+"','KAS DI TANGAN','0','"+(ttljual+ongkir-uangmuka)+"'","Rekening"); 
+                    Sequel.menyimpan2("tampjurnal","'"+Sequel.cariIsi("select Kontra_Piutang_Obat from set_akun")+"','PERSEDIAAN','0','"+(ttljual+ongkir-uangmuka)+"'","Rekening"); 
                     sukses=jur.simpanJurnal(NoNota.getText(),Valid.SetTgl(TglJual.getSelectedItem()+""),"U","PIUTANG DI "+nmgudang.getText().toUpperCase()+", OLEH "+akses.getkode());   
                 }
                 if(sukses==true){
@@ -1413,11 +1413,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             if(Sequel.cariInteger(
                                     "select count(*) from detailpiutang where nota_piutang=? and aturan_pakai<>''",NoNota.getText())>0){
                                 Valid.MyReportqry("rptItemResepPiutang.jasper","report","::[ Aturan Pakai Obat ]::",
-                                    "select piutang.nota_piutang,piutang.tgl_piutang,pasien.tgl_lahir, "+
-                                    "pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
+                                    "select piutang.nota_piutang,piutang.tgl_piutang, "+
+                                    "piutang.no_rkm_medis,piutang.nm_pasien,databarang.nama_brng,"+
                                     "detailpiutang.aturan_pakai,detailpiutang.jumlah,kodesatuan.satuan "+
                                     "from piutang inner join detailpiutang on piutang.nota_piutang=detailpiutang.nota_piutang "+
-                                    "inner join pasien on piutang.no_rkm_medis=pasien.no_rkm_medis "+
                                     "inner join databarang on detailpiutang.kode_brng=databarang.kode_brng "+
                                     "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
                                     "where piutang.nota_piutang='"+NoNota.getText()+"' and detailpiutang.aturan_pakai<>''",param);
@@ -1429,11 +1428,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             if(Sequel.cariInteger(
                                     "select count(*) from detailpiutang where nota_piutang=? and aturan_pakai<>''",NoNota.getText())>0){
                                 Valid.MyReportqry("rptItemResepPiutang2.jasper","report","::[ Aturan Pakai Obat ]::",
-                                    "select piutang.nota_piutang,piutang.tgl_piutang,pasien.tgl_lahir, "+
-                                    "pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
+                                    "select piutang.nota_piutang,piutang.tgl_piutang, "+
+                                    "piutang.no_rkm_medis,piutang.nm_pasien,databarang.nama_brng,"+
                                     "detailpiutang.aturan_pakai,detailpiutang.jumlah,kodesatuan.satuan,jenis.nama as jenis "+
                                     "from piutang inner join detailpiutang on piutang.nota_piutang=detailpiutang.nota_piutang "+
-                                    "inner join pasien on piutang.no_rkm_medis=pasien.no_rkm_medis "+
                                     "inner join databarang on detailpiutang.kode_brng=databarang.kode_brng "+
                                     "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
                                     "inner join jenis on databarang.kdjns=jenis.kdjns "+
@@ -1446,11 +1444,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             if(Sequel.cariInteger(
                                     "select count(*) from detailpiutang where nota_piutang=? and aturan_pakai<>''",NoNota.getText())>0){
                                 Valid.MyReportqry("rptItemResepPiutang3.jasper","report","::[ Aturan Pakai Obat ]::",
-                                    "select piutang.nota_piutang,piutang.tgl_piutang,pasien.tgl_lahir, "+
-                                    "pasien.no_rkm_medis,pasien.nm_pasien,databarang.nama_brng,"+
+                                    "select piutang.nota_piutang,piutang.tgl_piutang, "+
+                                    "piutang.no_rkm_medis,piutang.nm_pasien,databarang.nama_brng,"+
                                     "detailpiutang.aturan_pakai,detailpiutang.jumlah,kodesatuan.satuan "+
                                     "from piutang inner join detailpiutang on piutang.nota_piutang=detailpiutang.nota_piutang "+
-                                    "inner join pasien on piutang.no_rkm_medis=pasien.no_rkm_medis "+
                                     "inner join databarang on detailpiutang.kode_brng=databarang.kode_brng "+
                                     "inner join kodesatuan on databarang.kode_sat=kodesatuan.kode_sat "+
                                     "where piutang.nota_piutang='"+NoNota.getText()+"' and detailpiutang.aturan_pakai<>''",param);

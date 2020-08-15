@@ -127,7 +127,24 @@ public final class akses {
             inhealth_mapping_tindakan_ranap=false,inhealth_mapping_tindakan_radiologi=false,inhealth_mapping_tindakan_laborat=false,
             inhealth_mapping_tindakan_operasi=false,hibah_obat_bhp=false,asal_hibah=false,asuhan_gizi=false,inhealth_kirim_tagihan=false,
             sirkulasi_obat4=false,sirkulasi_obat5=false,sirkulasi_non_medis2=false,monitoring_asuhan_gizi=false,penerimaan_obat_perbulan=false,
-            rekap_kunjungan=false,surat_sakit=false;
+            rekap_kunjungan=false,surat_sakit=false,penilaian_awal_keperawatan_ralan=false,permintaan_diet=false,master_masalah_keperawatan=false,
+            pengajuan_cuti=false,kedatangan_pasien=false,utd_pendonor=false,toko_suplier=false,toko_jenis=false,toko_set_harga=false,
+            toko_barang=false,penagihan_piutang_pasien=false,akun_penagihan_piutang=false,stok_opname_toko=false,toko_riwayat_barang=false,
+            toko_surat_pemesanan=false,toko_pengajuan_barang=false,toko_penerimaan_barang=false,toko_pengadaan_barang=false,toko_hutang=false,
+            toko_bayar_pemesanan=false,toko_member=false,toko_penjualan=false,registrasi_poli_per_tanggal=false,toko_piutang=false,toko_retur_beli=false,
+            ipsrs_returbeli=false,ipsrs_riwayat_barang=false,pasien_corona=false,toko_pendapatan_harian=false,diagnosa_pasien_corona=false,
+            perawatan_pasien_corona=false,penilaian_awal_keperawatan_gigi=false,master_masalah_keperawatan_gigi=false,toko_bayar_piutang=false,
+            toko_piutang_harian=false,toko_penjualan_harian=false,deteksi_corona=false,penilaian_awal_keperawatan_kebidanan=false,pengumuman_epasien=false,
+            surat_hamil=false,set_tarif_online=false,booking_periksa=false,toko_sirkulasi=false,toko_retur_jual=false,toko_retur_piutang=false,
+            toko_sirkulasi2=false,toko_keuntungan_barang=false,zis_pengeluaran_penerima_dankes=false,zis_penghasilan_penerima_dankes=false,
+            zis_ukuran_rumah_penerima_dankes=false,zis_dinding_rumah_penerima_dankes=false,zis_lantai_rumah_penerima_dankes=false,
+            zis_atap_rumah_penerima_dankes=false,zis_kepemilikan_rumah_penerima_dankes=false,zis_kamar_mandi_penerima_dankes=false,
+            zis_dapur_rumah_penerima_dankes=false,zis_kursi_rumah_penerima_dankes=false,zis_kategori_phbs_penerima_dankes=false,
+            zis_elektronik_penerima_dankes=false,zis_ternak_penerima_dankes=false,zis_jenis_simpanan_penerima_dankes=false,penilaian_awal_keperawatan_anak=false,
+            zis_kategori_asnaf_penerima_dankes=false,master_masalah_keperawatan_anak=false,master_imunisasi=false,zis_patologis_penerima_dankes=false,
+            pcare_cek_kartu=false,surat_bebas_narkoba=false,surat_keterangan_covid=false,pemakaian_air_tanah=false,grafik_air_tanah_pertanggal=false,
+            grafik_air_tanah_perbulan=false,lama_pelayanan_poli=false,hemodialisa=false,grafik_harian_hemodialisa=false,grafik_bulanan_hemodialisa=false,
+            grafik_tahunan_hemodialisa=false,grafik_bulanan_meninggal=false,laporan_tahunan_irj=false;
     
     public static void setData(String user, String pass) {
        try {                
@@ -731,6 +748,85 @@ public final class akses {
                         akses.penerimaan_obat_perbulan=true;
                         akses.rekap_kunjungan=true;
                         akses.surat_sakit=true;
+                        akses.penilaian_awal_keperawatan_ralan=true;
+                        akses.permintaan_diet=true;
+                        akses.master_masalah_keperawatan=true;
+                        akses.pengajuan_cuti=true;
+                        akses.kedatangan_pasien=true;
+                        akses.utd_pendonor=true;
+                        akses.toko_suplier=true;
+                        akses.toko_jenis=true;
+                        akses.toko_set_harga=true;
+                        akses.toko_barang=true;
+                        akses.penagihan_piutang_pasien=true;
+                        akses.akun_penagihan_piutang=true;
+                        akses.stok_opname_toko=true;
+                        akses.toko_riwayat_barang=true;
+                        akses.toko_surat_pemesanan=true;
+                        akses.toko_pengajuan_barang=true;
+                        akses.toko_penerimaan_barang=true;
+                        akses.toko_pengadaan_barang=true;
+                        akses.toko_hutang=true;
+                        akses.toko_bayar_pemesanan=true;
+                        akses.toko_member=true;
+                        akses.toko_penjualan=true;
+                        akses.registrasi_poli_per_tanggal=true;
+                        akses.toko_piutang=true;
+                        akses.toko_retur_beli=true;
+                        akses.ipsrs_returbeli=true;
+                        akses.ipsrs_riwayat_barang=true;
+                        akses.pasien_corona=true;
+                        akses.toko_pendapatan_harian=true;
+                        akses.diagnosa_pasien_corona=true;
+                        akses.perawatan_pasien_corona=true;
+                        akses.penilaian_awal_keperawatan_gigi=true;
+                        akses.master_masalah_keperawatan_gigi=true;
+                        akses.toko_bayar_piutang=true;
+                        akses.toko_piutang_harian=true;
+                        akses.toko_penjualan_harian=true;
+                        akses.deteksi_corona=true;
+                        akses.penilaian_awal_keperawatan_kebidanan=true;
+                        akses.pengumuman_epasien=true;
+                        akses.surat_hamil=true;
+                        akses.set_tarif_online=true;
+                        akses.booking_periksa=true;
+                        akses.toko_sirkulasi=true;
+                        akses.toko_retur_jual=true;
+                        akses.toko_retur_piutang=true;
+                        akses.toko_sirkulasi2=true;
+                        akses.toko_keuntungan_barang=true;
+                        akses.zis_pengeluaran_penerima_dankes=true;
+                        akses.zis_penghasilan_penerima_dankes=true;
+                        akses.zis_ukuran_rumah_penerima_dankes=true;
+                        akses.zis_dinding_rumah_penerima_dankes=true;
+                        akses.zis_lantai_rumah_penerima_dankes=true;
+                        akses.zis_atap_rumah_penerima_dankes=true;
+                        akses.zis_kepemilikan_rumah_penerima_dankes=true;
+                        akses.zis_kamar_mandi_penerima_dankes=true;
+                        akses.zis_dapur_rumah_penerima_dankes=true;
+                        akses.zis_kursi_rumah_penerima_dankes=true;
+                        akses.zis_kategori_phbs_penerima_dankes=true;
+                        akses.zis_elektronik_penerima_dankes=true;
+                        akses.zis_ternak_penerima_dankes=true;
+                        akses.zis_jenis_simpanan_penerima_dankes=true;
+                        akses.penilaian_awal_keperawatan_anak=true;
+                        akses.zis_kategori_asnaf_penerima_dankes=true;
+                        akses.master_masalah_keperawatan_anak=true;
+                        akses.master_imunisasi=true;
+                        akses.zis_patologis_penerima_dankes=true;
+                        akses.pcare_cek_kartu=true;
+                        akses.surat_bebas_narkoba=true;
+                        akses.surat_keterangan_covid=true;
+                        akses.pemakaian_air_tanah=true;
+                        akses.grafik_air_tanah_pertanggal=true;
+                        akses.grafik_air_tanah_perbulan=true;
+                        akses.lama_pelayanan_poli=true;
+                        akses.hemodialisa=true;
+                        akses.grafik_harian_hemodialisa=true;
+                        akses.grafik_bulanan_hemodialisa=true;
+                        akses.grafik_tahunan_hemodialisa=true;
+                        akses.grafik_bulanan_meninggal=true;
+                        akses.laporan_tahunan_irj=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -1318,6 +1414,85 @@ public final class akses {
                         akses.penerimaan_obat_perbulan=rs2.getBoolean("penerimaan_obat_perbulan");
                         akses.rekap_kunjungan=rs2.getBoolean("rekap_kunjungan");
                         akses.surat_sakit=rs2.getBoolean("surat_sakit");
+                        akses.penilaian_awal_keperawatan_ralan=rs2.getBoolean("penilaian_awal_keperawatan_ralan");
+                        akses.permintaan_diet=rs2.getBoolean("permintaan_diet");
+                        akses.master_masalah_keperawatan=rs2.getBoolean("master_masalah_keperawatan");
+                        akses.pengajuan_cuti=rs2.getBoolean("pengajuan_cuti");
+                        akses.kedatangan_pasien=rs2.getBoolean("kedatangan_pasien");
+                        akses.utd_pendonor=rs2.getBoolean("utd_pendonor");
+                        akses.toko_suplier=rs2.getBoolean("toko_suplier");
+                        akses.toko_jenis=rs2.getBoolean("toko_jenis");
+                        akses.toko_set_harga=rs2.getBoolean("toko_set_harga");
+                        akses.toko_barang=rs2.getBoolean("toko_barang");
+                        akses.penagihan_piutang_pasien=rs2.getBoolean("penagihan_piutang_pasien");
+                        akses.akun_penagihan_piutang=rs2.getBoolean("akun_penagihan_piutang");
+                        akses.stok_opname_toko=rs2.getBoolean("stok_opname_toko");
+                        akses.toko_riwayat_barang=rs2.getBoolean("toko_riwayat_barang");
+                        akses.toko_surat_pemesanan=rs2.getBoolean("toko_surat_pemesanan");
+                        akses.toko_pengajuan_barang=rs2.getBoolean("toko_pengajuan_barang");
+                        akses.toko_penerimaan_barang=rs2.getBoolean("toko_penerimaan_barang");
+                        akses.toko_pengadaan_barang=rs2.getBoolean("toko_pengadaan_barang");
+                        akses.toko_hutang=rs2.getBoolean("toko_hutang");
+                        akses.toko_bayar_pemesanan=rs2.getBoolean("toko_bayar_pemesanan");
+                        akses.toko_member=rs2.getBoolean("toko_member");
+                        akses.toko_penjualan=rs2.getBoolean("toko_penjualan");
+                        akses.registrasi_poli_per_tanggal=rs2.getBoolean("registrasi_poli_per_tanggal");
+                        akses.toko_piutang=rs2.getBoolean("toko_piutang");
+                        akses.toko_retur_beli=rs2.getBoolean("toko_retur_beli");
+                        akses.ipsrs_returbeli=rs2.getBoolean("ipsrs_returbeli");
+                        akses.ipsrs_riwayat_barang=rs2.getBoolean("ipsrs_riwayat_barang");
+                        akses.pasien_corona=rs2.getBoolean("pasien_corona");
+                        akses.toko_pendapatan_harian=rs2.getBoolean("toko_pendapatan_harian");
+                        akses.diagnosa_pasien_corona=rs2.getBoolean("diagnosa_pasien_corona");
+                        akses.perawatan_pasien_corona=rs2.getBoolean("perawatan_pasien_corona");
+                        akses.penilaian_awal_keperawatan_gigi=rs2.getBoolean("penilaian_awal_keperawatan_gigi");
+                        akses.master_masalah_keperawatan_gigi=rs2.getBoolean("master_masalah_keperawatan_gigi");
+                        akses.toko_bayar_piutang=rs2.getBoolean("toko_bayar_piutang");
+                        akses.toko_piutang_harian=rs2.getBoolean("toko_piutang_harian");
+                        akses.toko_penjualan_harian=rs2.getBoolean("toko_penjualan_harian");
+                        akses.deteksi_corona=rs2.getBoolean("deteksi_corona");
+                        akses.penilaian_awal_keperawatan_kebidanan=rs2.getBoolean("penilaian_awal_keperawatan_kebidanan");
+                        akses.pengumuman_epasien=rs2.getBoolean("pengumuman_epasien");
+                        akses.surat_hamil=rs2.getBoolean("surat_hamil");
+                        akses.set_tarif_online=rs2.getBoolean("set_tarif_online");
+                        akses.booking_periksa=rs2.getBoolean("booking_periksa");
+                        akses.toko_sirkulasi=rs2.getBoolean("toko_sirkulasi");
+                        akses.toko_retur_jual=rs2.getBoolean("toko_retur_jual");
+                        akses.toko_retur_piutang=rs2.getBoolean("toko_retur_piutang");
+                        akses.toko_sirkulasi2=rs2.getBoolean("toko_sirkulasi2");
+                        akses.toko_keuntungan_barang=rs2.getBoolean("toko_keuntungan_barang");
+                        akses.zis_pengeluaran_penerima_dankes=rs2.getBoolean("zis_pengeluaran_penerima_dankes");
+                        akses.zis_penghasilan_penerima_dankes=rs2.getBoolean("zis_penghasilan_penerima_dankes");
+                        akses.zis_ukuran_rumah_penerima_dankes=rs2.getBoolean("zis_ukuran_rumah_penerima_dankes");
+                        akses.zis_dinding_rumah_penerima_dankes=rs2.getBoolean("zis_dinding_rumah_penerima_dankes");
+                        akses.zis_lantai_rumah_penerima_dankes=rs2.getBoolean("zis_lantai_rumah_penerima_dankes");
+                        akses.zis_atap_rumah_penerima_dankes=rs2.getBoolean("zis_atap_rumah_penerima_dankes");
+                        akses.zis_kepemilikan_rumah_penerima_dankes=rs2.getBoolean("zis_kepemilikan_rumah_penerima_dankes");
+                        akses.zis_kamar_mandi_penerima_dankes=rs2.getBoolean("zis_kamar_mandi_penerima_dankes");
+                        akses.zis_dapur_rumah_penerima_dankes=rs2.getBoolean("zis_dapur_rumah_penerima_dankes");
+                        akses.zis_kursi_rumah_penerima_dankes=rs2.getBoolean("zis_kursi_rumah_penerima_dankes");
+                        akses.zis_kategori_phbs_penerima_dankes=rs2.getBoolean("zis_kategori_phbs_penerima_dankes");
+                        akses.zis_elektronik_penerima_dankes=rs2.getBoolean("zis_elektronik_penerima_dankes");
+                        akses.zis_ternak_penerima_dankes=rs2.getBoolean("zis_ternak_penerima_dankes");
+                        akses.zis_jenis_simpanan_penerima_dankes=rs2.getBoolean("zis_jenis_simpanan_penerima_dankes");
+                        akses.penilaian_awal_keperawatan_anak=rs2.getBoolean("penilaian_awal_keperawatan_anak");
+                        akses.zis_kategori_asnaf_penerima_dankes=rs2.getBoolean("zis_kategori_asnaf_penerima_dankes");
+                        akses.master_masalah_keperawatan_anak=rs2.getBoolean("master_masalah_keperawatan_anak");
+                        akses.master_imunisasi=rs2.getBoolean("master_imunisasi");
+                        akses.zis_patologis_penerima_dankes=rs2.getBoolean("zis_patologis_penerima_dankes");
+                        akses.pcare_cek_kartu=rs2.getBoolean("pcare_cek_kartu");
+                        akses.surat_bebas_narkoba=rs2.getBoolean("surat_bebas_narkoba");
+                        akses.surat_keterangan_covid=rs2.getBoolean("surat_keterangan_covid");
+                        akses.pemakaian_air_tanah=rs2.getBoolean("pemakaian_air_tanah");
+                        akses.grafik_air_tanah_pertanggal=rs2.getBoolean("grafik_air_tanah_pertanggal");
+                        akses.grafik_air_tanah_perbulan=rs2.getBoolean("grafik_air_tanah_perbulan");
+                        akses.lama_pelayanan_poli=rs2.getBoolean("lama_pelayanan_poli");
+                        akses.hemodialisa=rs2.getBoolean("hemodialisa");
+                        akses.grafik_harian_hemodialisa=rs2.getBoolean("grafik_harian_hemodialisa");
+                        akses.grafik_bulanan_hemodialisa=rs2.getBoolean("grafik_bulanan_hemodialisa");
+                        akses.grafik_tahunan_hemodialisa=rs2.getBoolean("grafik_tahunan_hemodialisa");
+                        akses.grafik_bulanan_meninggal=rs2.getBoolean("grafik_bulanan_meninggal");
+                        akses.laporan_tahunan_irj=rs2.getBoolean("laporan_tahunan_irj");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -1903,6 +2078,85 @@ public final class akses {
                         akses.penerimaan_obat_perbulan=false;
                         akses.rekap_kunjungan=false;
                         akses.surat_sakit=false;
+                        akses.penilaian_awal_keperawatan_ralan=false;
+                        akses.permintaan_diet=false;
+                        akses.master_masalah_keperawatan=false;
+                        akses.pengajuan_cuti=false;
+                        akses.kedatangan_pasien=false;
+                        akses.utd_pendonor=false;
+                        akses.toko_suplier=false;
+                        akses.toko_jenis=false;
+                        akses.toko_set_harga=false;
+                        akses.toko_barang=false;
+                        akses.penagihan_piutang_pasien=false;
+                        akses.akun_penagihan_piutang=false;
+                        akses.stok_opname_toko=false;
+                        akses.toko_riwayat_barang=false;
+                        akses.toko_surat_pemesanan=false;
+                        akses.toko_pengajuan_barang=false;
+                        akses.toko_penerimaan_barang=false;
+                        akses.toko_pengadaan_barang=false;
+                        akses.toko_hutang=false;
+                        akses.toko_bayar_pemesanan=false;
+                        akses.toko_member=false;
+                        akses.toko_penjualan=false;
+                        akses.registrasi_poli_per_tanggal=false;
+                        akses.toko_piutang=false;
+                        akses.toko_retur_beli=false;
+                        akses.ipsrs_returbeli=false;
+                        akses.ipsrs_riwayat_barang=false;
+                        akses.pasien_corona=false;
+                        akses.toko_pendapatan_harian=false;
+                        akses.diagnosa_pasien_corona=false;
+                        akses.perawatan_pasien_corona=false;
+                        akses.penilaian_awal_keperawatan_gigi=false;
+                        akses.master_masalah_keperawatan_gigi=false;
+                        akses.toko_bayar_piutang=false;
+                        akses.toko_piutang_harian=false;
+                        akses.toko_penjualan_harian=false;
+                        akses.deteksi_corona=false;
+                        akses.penilaian_awal_keperawatan_kebidanan=false;
+                        akses.pengumuman_epasien=false;
+                        akses.surat_hamil=false;
+                        akses.set_tarif_online=false;
+                        akses.booking_periksa=false;
+                        akses.toko_sirkulasi=false;
+                        akses.toko_retur_jual=false;
+                        akses.toko_retur_piutang=false;
+                        akses.toko_sirkulasi2=false;
+                        akses.toko_keuntungan_barang=false;
+                        akses.zis_pengeluaran_penerima_dankes=false;
+                        akses.zis_penghasilan_penerima_dankes=false;
+                        akses.zis_ukuran_rumah_penerima_dankes=false;
+                        akses.zis_dinding_rumah_penerima_dankes=false;
+                        akses.zis_lantai_rumah_penerima_dankes=false;
+                        akses.zis_atap_rumah_penerima_dankes=false;
+                        akses.zis_kepemilikan_rumah_penerima_dankes=false;
+                        akses.zis_kamar_mandi_penerima_dankes=false;
+                        akses.zis_dapur_rumah_penerima_dankes=false;
+                        akses.zis_kursi_rumah_penerima_dankes=false;
+                        akses.zis_kategori_phbs_penerima_dankes=false;
+                        akses.zis_elektronik_penerima_dankes=false;
+                        akses.zis_ternak_penerima_dankes=false;
+                        akses.zis_jenis_simpanan_penerima_dankes=false;
+                        akses.penilaian_awal_keperawatan_anak=false;
+                        akses.zis_kategori_asnaf_penerima_dankes=false;
+                        akses.master_masalah_keperawatan_anak=false;
+                        akses.master_imunisasi=false;
+                        akses.zis_patologis_penerima_dankes=false;
+                        akses.pcare_cek_kartu=false;
+                        akses.surat_bebas_narkoba=false;
+                        akses.surat_keterangan_covid=false;
+                        akses.pemakaian_air_tanah=false;
+                        akses.grafik_air_tanah_pertanggal=false;
+                        akses.grafik_air_tanah_perbulan=false;
+                        akses.lama_pelayanan_poli=false;
+                        akses.hemodialisa=false;
+                        akses.grafik_harian_hemodialisa=false;
+                        akses.grafik_bulanan_hemodialisa=false;
+                        akses.grafik_tahunan_hemodialisa=false;
+                        akses.grafik_bulanan_meninggal=false;
+                        akses.laporan_tahunan_irj=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -2542,4 +2796,83 @@ public final class akses {
     public static boolean getpenerimaan_obat_perbulan(){return akses.penerimaan_obat_perbulan;}
     public static boolean getrekap_kunjungan(){return akses.rekap_kunjungan;}
     public static boolean getsurat_sakit(){return akses.surat_sakit;}
+    public static boolean getpenilaian_awal_keperawatan_ralan(){return akses.penilaian_awal_keperawatan_ralan;}
+    public static boolean getpermintaan_diet(){return akses.permintaan_diet;}
+    public static boolean getmaster_masalah_keperawatan(){return akses.master_masalah_keperawatan;}
+    public static boolean getpengajuan_cuti(){return akses.pengajuan_cuti;}
+    public static boolean getkedatangan_pasien(){return akses.kedatangan_pasien;}
+    public static boolean getutd_pendonor(){return akses.utd_pendonor;}
+    public static boolean gettoko_suplier(){return akses.toko_suplier;}
+    public static boolean gettoko_jenis(){return akses.toko_jenis;}
+    public static boolean gettoko_set_harga(){return akses.toko_set_harga;}
+    public static boolean gettoko_barang(){return akses.toko_barang;}
+    public static boolean getpenagihan_piutang_pasien(){return akses.penagihan_piutang_pasien;}
+    public static boolean getakun_penagihan_piutang(){return akses.akun_penagihan_piutang;}
+    public static boolean getstok_opname_toko(){return akses.stok_opname_toko;}
+    public static boolean gettoko_riwayat_barang(){return akses.toko_riwayat_barang;}
+    public static boolean gettoko_surat_pemesanan(){return akses.toko_surat_pemesanan;}
+    public static boolean gettoko_pengajuan_barang(){return akses.toko_pengajuan_barang;}
+    public static boolean gettoko_penerimaan_barang(){return akses.toko_penerimaan_barang;}
+    public static boolean gettoko_pengadaan_barang(){return akses.toko_pengadaan_barang;}
+    public static boolean gettoko_hutang(){return akses.toko_hutang;}
+    public static boolean gettoko_bayar_pemesanan(){return akses.toko_bayar_pemesanan;}
+    public static boolean gettoko_member(){return akses.toko_member;}
+    public static boolean gettoko_penjualan(){return akses.toko_penjualan;}
+    public static boolean getregistrasi_poli_per_tanggal(){return akses.registrasi_poli_per_tanggal;}
+    public static boolean gettoko_piutang(){return akses.toko_piutang;}
+    public static boolean gettoko_retur_beli(){return akses.toko_retur_beli;}
+    public static boolean getipsrs_returbeli(){return akses.ipsrs_returbeli;}
+    public static boolean getipsrs_riwayat_barang(){return akses.ipsrs_riwayat_barang;}
+    public static boolean getpasien_corona(){return akses.pasien_corona;}
+    public static boolean gettoko_pendapatan_harian(){return akses.toko_pendapatan_harian;}
+    public static boolean getdiagnosa_pasien_corona(){return akses.diagnosa_pasien_corona;}
+    public static boolean getperawatan_pasien_corona(){return akses.perawatan_pasien_corona;}
+    public static boolean getpenilaian_awal_keperawatan_gigi(){return akses.penilaian_awal_keperawatan_gigi;}
+    public static boolean getmaster_masalah_keperawatan_gigi(){return akses.master_masalah_keperawatan_gigi;}
+    public static boolean gettoko_bayar_piutang(){return akses.toko_bayar_piutang;}
+    public static boolean gettoko_piutang_harian(){return akses.toko_piutang_harian;}
+    public static boolean gettoko_penjualan_harian(){return akses.toko_penjualan_harian;}
+    public static boolean getdeteksi_corona(){return akses.deteksi_corona;}
+    public static boolean getpenilaian_awal_keperawatan_kebidanan(){return akses.penilaian_awal_keperawatan_kebidanan;}
+    public static boolean getpengumuman_epasien(){return akses.pengumuman_epasien;}
+    public static boolean getsurat_hamil(){return akses.surat_hamil;}
+    public static boolean getset_tarif_online(){return akses.set_tarif_online;}
+    public static boolean getbooking_periksa(){return akses.booking_periksa;}
+    public static boolean gettoko_sirkulasi(){return akses.toko_sirkulasi;}
+    public static boolean gettoko_retur_jual(){return akses.toko_retur_jual;}
+    public static boolean gettoko_retur_piutang(){return akses.toko_retur_piutang;}
+    public static boolean gettoko_sirkulasi2(){return akses.toko_sirkulasi2;}
+    public static boolean gettoko_keuntungan_barang(){return akses.toko_keuntungan_barang;}
+    public static boolean getzis_pengeluaran_penerima_dankes(){return akses.zis_pengeluaran_penerima_dankes;}
+    public static boolean getzis_penghasilan_penerima_dankes(){return akses.zis_penghasilan_penerima_dankes;}
+    public static boolean getzis_ukuran_rumah_penerima_dankes(){return akses.zis_ukuran_rumah_penerima_dankes;}
+    public static boolean getzis_dinding_rumah_penerima_dankes(){return akses.zis_dinding_rumah_penerima_dankes;}
+    public static boolean getzis_lantai_rumah_penerima_dankes(){return akses.zis_lantai_rumah_penerima_dankes;}
+    public static boolean getzis_atap_rumah_penerima_dankes(){return akses.zis_atap_rumah_penerima_dankes;}
+    public static boolean getzis_kepemilikan_rumah_penerima_dankes(){return akses.zis_kepemilikan_rumah_penerima_dankes;}
+    public static boolean getzis_kamar_mandi_penerima_dankes(){return akses.zis_kamar_mandi_penerima_dankes;}
+    public static boolean getzis_dapur_rumah_penerima_dankes(){return akses.zis_dapur_rumah_penerima_dankes;}
+    public static boolean getzis_kursi_rumah_penerima_dankes(){return akses.zis_kursi_rumah_penerima_dankes;}
+    public static boolean getzis_kategori_phbs_penerima_dankes(){return akses.zis_kategori_phbs_penerima_dankes;}
+    public static boolean getzis_elektronik_penerima_dankes(){return akses.zis_elektronik_penerima_dankes;}
+    public static boolean getzis_ternak_penerima_dankes(){return akses.zis_ternak_penerima_dankes;}
+    public static boolean getzis_jenis_simpanan_penerima_dankes(){return akses.zis_jenis_simpanan_penerima_dankes;}
+    public static boolean getpenilaian_awal_keperawatan_anak(){return akses.penilaian_awal_keperawatan_anak;}
+    public static boolean getzis_kategori_asnaf_penerima_dankes(){return akses.zis_kategori_asnaf_penerima_dankes;}
+    public static boolean getmaster_masalah_keperawatan_anak(){return akses.master_masalah_keperawatan_anak;}
+    public static boolean getmaster_imunisasi(){return akses.master_imunisasi;}
+    public static boolean getzis_patologis_penerima_dankes(){return akses.zis_patologis_penerima_dankes;}
+    public static boolean getpcare_cek_kartu(){return akses.pcare_cek_kartu;}
+    public static boolean getsurat_bebas_narkoba(){return akses.surat_bebas_narkoba;}
+    public static boolean getsurat_keterangan_covid(){return akses.surat_keterangan_covid;}
+    public static boolean getpemakaian_air_tanah(){return akses.pemakaian_air_tanah;}
+    public static boolean getgrafik_air_tanah_pertanggal(){return akses.grafik_air_tanah_pertanggal;}
+    public static boolean getgrafik_air_tanah_perbulan(){return akses.grafik_air_tanah_perbulan;}
+    public static boolean getlama_pelayanan_poli(){return akses.lama_pelayanan_poli;}
+    public static boolean gethemodialisa(){return akses.hemodialisa;}
+    public static boolean getgrafik_harian_hemodialisa(){return akses.grafik_harian_hemodialisa;}
+    public static boolean getgrafik_bulanan_hemodialisa(){return akses.grafik_bulanan_hemodialisa;}
+    public static boolean getgrafik_tahunan_hemodialisa(){return akses.grafik_tahunan_hemodialisa;}
+    public static boolean getgrafik_bulanan_meninggal(){return akses.grafik_bulanan_meninggal;}
+    public static boolean getlaporan_tahunan_irj(){return akses.laporan_tahunan_irj;}
 }   
